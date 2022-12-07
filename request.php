@@ -1,9 +1,9 @@
 <?php
 
-function request($data, $id) {
+function request($data) {
     $postdata = json_encode($data);
 
-    $url = "https://gucianotravel.com/api.v2/integration/web-hoock/{$id}";
+    $url = "https://gucianotravel.com/api.v2/integration/web-hoock";
 
     // persiapkan curl
     $ch = curl_init(); 
@@ -26,11 +26,11 @@ function request($data, $id) {
     // menampilkan hasil curl
     if ($httpcode === 200)
     {
-        echo $output;
+        return true;
     }
     else
     {
-        echo 'Err';
+        return false;
     }
 }
 

@@ -2,11 +2,21 @@
 
 require_once './request.php';
 
+$keitaroRequest = (object) $_REQUEST;
+
 $data = array(
-    "clickId" => "23423ver4r3t",
-    "status" => "reject",
-    "dateTime" => "12:00",
-    "payout" => "12:00",
+    "clickId" => $keitaroRequest->clickId,
+    "status" => $keitaroRequest->status,
+    "payout" => $keitaroRequest->payout
 );
 
-request($data, '123');
+
+
+while(true)
+{
+
+    if (!$keitaroRequest->clickId) break;
+    if (request($data)) break;
+    sleep(10);
+
+}
